@@ -20,7 +20,10 @@ from ctypes import *
 #v = loadmodel()
 #data = {"fail" : 35}
 #sys.stdout.write(str(data))
-fn  = sys.argv[1]# 'C:\\inetpub\\wwwroot\\TextPrepPilot\\OCRModule\\im10.jpg'
+
+    
+#fn  = sys.argv[1]
+fn  = '\\images\\im1.jpg'
 #mdll= ctypes.WinDLL ("C:\\inetpub\\wwwroot\\TextPrepPilot\\ORCModule\\model.dll")#= loadModel('charmodelmix55.cnn')
 model = loadModel('charmodelmix55.cnn') 
 out   = CharRecognition(fn, model)
