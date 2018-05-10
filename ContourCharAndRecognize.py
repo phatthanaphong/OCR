@@ -122,6 +122,9 @@ def processNoPredict(name):
     pathIn, finame = os.path.split(name)
     fi=os.path.splitext(finame)[0]
     imgori = cv2.imread(name,1)
+    if imgori == None : 
+        print("cannot load images")
+        return (None, None)
     h,w  = imgori.shape[:2]
     img  = clean_image(imgori,fi,pathIn)
     recog, img0, block_img, chars = extract_characters(imgori, img, fi,pathIn, None)
