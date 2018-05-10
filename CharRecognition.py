@@ -3,11 +3,11 @@ import errno
 import os
 import cv2
 import numpy as np
-from contourCharAndRecognize import processNoPredict
+from   ContourCharAndRecognize import processNoPredict
 import statistics
 import math
-from predictThai import predictThai
-from formatText import formatText1
+from   PredictThai import predictThai
+from   FormatText import formatText1
 
 
 # ============================================================================    
@@ -48,11 +48,14 @@ def findNB(t, tmp):
 
 # The main function to perform the detection and recognition
 # ============================================================================    
-def CharRecognition(file, model):
-
-    if model != None :
+def CharRecognition(file, modelFile):
+    
         chars, im = processNoPredict(file)
-     
+
+        if  im == None:
+            return None
+    
+        model = loadModel(modelFile) 
         output_img = cv2.cvtColor(im, cv2.COLOR_GRAY2BGR)
 
         max_char = 100
@@ -213,7 +216,5 @@ def CharRecognition(file, model):
             line = formatText1(line)
             if len(line) > 1 :
                 trans.append(line)
-        return trans
-    else:
-        return None
-  
+
+            return trans
