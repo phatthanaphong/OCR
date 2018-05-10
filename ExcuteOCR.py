@@ -1,4 +1,4 @@
-from loadModel import loadModel
+from LoadModel import loadModel
 from CharRecognition import CharRecognition
 import sys, json
 from ctypes import *
@@ -23,14 +23,15 @@ from ctypes import *
 
     
 #fn  = sys.argv[1]
-fn  = '\\images\\im1.jpg'
+fn  = '/images/im1.jpg'
 #mdll= ctypes.WinDLL ("C:\\inetpub\\wwwroot\\TextPrepPilot\\ORCModule\\model.dll")#= loadModel('charmodelmix55.cnn')
-model = loadModel('charmodelmix55.cnn') 
-out   = CharRecognition(fn, model)
-tmp = ''
-for l in out:
-    for lp in l:
-        tmp = tmp+lp
-    tmp = tmp+'\n'
-#s = unicode(tmp, "utf-8")
-print(tmp)
+modelFile = 'charmodelmix55.cnn'
+out   = CharRecognition(fn, modelFile)
+if out != None :
+    tmp = ''
+    for l in out:
+        for lp in l:
+            tmp = tmp+lp
+        tmp = tmp+'\n'
+    #s = unicode(tmp, "utf-8")
+    print(tmp)
